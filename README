@@ -1,30 +1,47 @@
-cxx-prettyprint
-===============
+## C++ pretty printer
+
+forked from: [louisdx/cxx-prettyprint](https://github.com/louisdx/cxx-prettyprint)
 
 A pretty printing library for C++ containers.
 
-Synopsis:
-  Simply by including this header-only library in your source file,
-  you can say "std::cout << x" for any container object x. Sensible
-  defaults are provided, but the behaviour (i.e. the delimiters) are
-  compile-time customizable to a great extent via partial specializiation.
+## Synopsis
 
-Usage:
-  Just add "#include "prettyprint.hpp" to your source file and make sure
-  that prettyprint.hpp is findable.
+Simply by including this header-only library in your source file,
+you can say "std::cout << x" for any container object x. Sensible
+defaults are provided, but the behaviour (i.e. the delimiters) are
+compile-time customizable to a great extent via partial specializiation.
 
-Language requirements: C++0x for prettyprint.hpp, C++98/03 for prettyprint98.hpp
+## Usage
 
-Example:
-  Some usage examples are provided by ppdemo.cpp.
+Just:
 
-  Using GCC, compile with
-    g++ -W -Wall -pedantic -O2 -s ppdemo.cpp -o ppdemo -std=c++0x 
-    g++ -W -Wall -pedantic -O2 -s ppdemo98.cpp -o ppdemo98
+``` bash
+wget https://github.com/fATwaer/pretty-printer/blob/master/printer.hpp
+```
 
-For the C++98/03-version, define "NO_TR1" to prevent any inclusion of
-TR1 headers and to disable std::tr1::tuple support.
+Then:
 
-For details, please see the website (http://louisdx.github.com/cxx-prettyprint/).
+``` c++
+#include "printer.hpp"
+#include <vector>
+
+using namespace std;
+
+int main() {
+  vector<int> vec1 {0, 1, 2, 3, 4};
+  cout << "vec1: " << ToString(vec1) << endl;
+
+  map<int, string> mp1 {{42 , "answer"}, {1024 , "2^10"}};
+  cout << "mp1: " << ToString(mp1) << endl;
+}
+```
+
+Output:
+```
+vec1: [0, 1, 2, 3, 4]
+mp1: [1: ["11", "12", "13"], 2: ["21", "22"], 3: ["31"]]
+```
+
+For details, please see the website (http://fatwaer.github.com/prettyprinter/).
 
 License: Boost Software License, Version 1.0. See http://www.boost.org/LICENSE_1_0.txt.
